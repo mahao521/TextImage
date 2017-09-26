@@ -9,33 +9,51 @@
     xmlns:textImage="http://schemas.android.com/apk/res-auto"
     tools:context="com.mahao.textimage.MainActivity">
 
-    <com.mahao.textimage.TextImage
-        android:id="@+id/txt_txtImage"
-        android:background="#ffffff"
-        textImage:txtSrc="@mipmap/dashang"
-        textImage:txtContent="打赏了5元"
-        android:layout_width="400dp"
-        android:layout_height="400dp"/>
 
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp">
+
+        <com.mahao.textimage.utils.TextImage
+            android:id="@+id/txt_txtImage"
+            android:background="#ffffff"
+            textImage:txtSrc="@mipmap/dashang"
+            textImage:txtContent="打赏了5元"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="400dp"/>
+
+        <ImageView
+            android:id="@+id/img_one"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
     <Button
-        android:text="点击变色"
+        android:text="绘制图片"
         android:id="@+id/btn_one"
         android:onClick="btnClick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
     <Button
-        android:text=""
+        android:layout_marginTop="10dp"
         android:id="@+id/btn_two"
         android:onClick="btnClick"
+        android:text="Image-Loader加载图片"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <ImageView
-        android:id="@+id/img_one"
-        android:layout_width="200dp"
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_three"
+        android:onClick="btnClick"
+        android:text="Volley"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 
 </LinearLayout>

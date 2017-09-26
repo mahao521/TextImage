@@ -4,8 +4,17 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
+
+    <style name="MahaoStyle" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+      <!--  <item name="android:windowBackground">@mipmap/rion</item>-->
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="ProgressBarStyle" parent="@android:style/Widget.ProgressBar.Horizontal"/>
 
 </resources>
