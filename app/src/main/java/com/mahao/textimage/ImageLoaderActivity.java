@@ -1,5 +1,4 @@
 package com.mahao.textimage;
-
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -22,7 +21,6 @@ import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-
 /**
  *  imageloader加载流程：
  *
@@ -48,7 +46,7 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
  *
  *             1） 获取到，返回文件路径
  *
- *             2） 未获取到，从网络获取，并写入文件（依据初始化的options），返回文件路径
+ *             2） 未获取到，从网络获取 tryCacheImageOnDisk()，并写入文件（依据初始化的options），返回文件路径
  *
  *          2 ： 通过路径生成bitmap，通过options，是否需要存储到内存缓存；
  *               configuration.memoryCache.put(memoryCacheKey, bmp);
@@ -66,6 +64,15 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
  *   6 ：  文件缓存路径 ： String cacheDirPath = "/data/data/" + context.getPackageName() + "/cache/";
  *        内存缓存路径 : 一个线程所占用APP内存的大小; 由 dalvik.vm.heapsize 控制；
  *                      过多分配会内存溢出
+ *
+ *   7 ： 构造一个缓冲功能的线程池，配置corePoolSize=0，
+ *        maximumPoolSize=Integer.MAX_VALUE，keepAliveTime=60s,
+ *        以及一个无容量的阻塞队列 SynchronousQueue，因此任务提交之后，将会创建新的线程执行；
+ *        线程空闲超过60s将会销毁
+ *        ImageLoader内置一个缓冲线程池，因此可以处理多个图片异步加载。
+ *
+ *
+ *
  */
 public class ImageLoaderActivity extends AppCompatActivity {
 
@@ -92,7 +99,6 @@ public class ImageLoaderActivity extends AppCompatActivity {
                //.displayer(new RoundedVignetteBitmapDisplayer(5,10)) //图片眩晕效果
                //.displayer(new FadeInBitmapDisplayer(300))
                // .displayer(new CircleBitmapDisplayer(Color.RED,2))
-
 
         final ImageView img = (ImageView) findViewById(R.id.img_loader_1);
         final  ProgressBar bar = (ProgressBar) findViewById(R.id.bar_progress);
@@ -123,7 +129,6 @@ public class ImageLoaderActivity extends AppCompatActivity {
                 bar.setVisibility(View.GONE);
             }
         });
-
         //加载第二图
         String path2 = "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=fb7717c44dfbfbedc8543e2d19999c53/c8ea15ce36d3d53917d889383c87e950342ab060.jpg";
         ImageView imgLoder2 = (ImageView) findViewById(R.id.img_loader_2);

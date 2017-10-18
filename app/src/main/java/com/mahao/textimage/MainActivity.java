@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent3 = new Intent(this,VolleyActivity.class);
                 startActivity(intent3);
                 break;
+            case R.id.btn_four: //okhttp
+                Intent intent4 = new Intent(this,OkHttpActivity.class);
+                startActivity(intent4);
+                break;
         }
     }
 

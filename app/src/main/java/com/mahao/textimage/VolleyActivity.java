@@ -18,13 +18,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
@@ -75,6 +73,8 @@ import java.util.Set;
  *         1 ：josnObject和JsonArray是Request的间接子类，复写了getBody()方法，
  *             但是getBody没有调用getParams方法，因此复写传递post请求时候，复写getParams方法没用
  *         2 ： StringRequest是直接子类，可以复写getParams方法；
+ *
+ *     8 :vollery弊端 ： 没有使用线程池，使用了阻塞队列，当有大量任务时候，阻塞队列过长会导致oom或者over stack flow；
  */
 public class VolleyActivity extends AppCompatActivity {
 

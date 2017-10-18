@@ -39,6 +39,8 @@
         </activity>
         <activity android:name=".VolleyActivity">
         </activity>
+        <activity android:name=".OkHttpActivity">
+        </activity>
     </application>
 
 </manifest>
