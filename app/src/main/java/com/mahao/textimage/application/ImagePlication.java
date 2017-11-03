@@ -12,7 +12,19 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
  * Created by Penghy on 2017/9/18.
  */
 
+ 
+ 
+ 
 public class ImagePlication extends Application {
+
+
+
+
+//sjjdjjsd
+
+
+
+
 
     @Override
     public void onCreate() {
