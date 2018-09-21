@@ -63,7 +63,7 @@ import java.util.Set;
  *    5 ： 数据缓存。（内存缓存）
  *         默认开启数据缓存。jsObjRequest.setShouldCache(true);
  *         是否真正缓存---依据 ： 1 ： response返回的header中Cache-Control判断。服务器设置。
- *        也就是通常volley是没有数据缓存的。
+ *         也就是通常volley是没有文件缓存的。
  *
  *    6 : 获取图片的两种方式
  *         1 ： 常用的请求方式ImageRequest(); 重写parseNetworkResponse返回想要的数据类型；
@@ -74,7 +74,7 @@ import java.util.Set;
  *             但是getBody没有调用getParams方法，因此复写传递post请求时候，复写getParams方法没用
  *         2 ： StringRequest是直接子类，可以复写getParams方法；
  *
- *     8 :vollery弊端 ： 没有使用线程池，使用了阻塞队列，当有大量任务时候，阻塞队列过长会导致oom或者over stack flow；
+ *     8 :vollery弊端 ： 没有使用线程池，默认开启4个线程去请求网络，使用了阻塞队列，当有大量任务时候，阻塞队列过长会导致oom或者over stack flow；
  */
 public class VolleyActivity extends AppCompatActivity {
 
